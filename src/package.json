@@ -1,7 +1,7 @@
 {
-    "name": "nativescript-appsettings-async",
+    "name": "@nota/nativescript-appsettings-async",
     "version": "1.0.0",
-    "description": "Your awesome NativeScript plugin.",
+    "description": "Like NativeScript's application-settings module, but with non-blocking setters",
     "main": "appsettings-async",
     "typings": "index.d.ts",
     "nativescript": {
@@ -21,6 +21,8 @@
         "plugin.tscwatch": "npm run tsc -- -w",
         "demo.ios": "npm i && npm run tsc && cd ../demo && tns run ios --syncAllFiles",
         "demo.android": "npm i && npm run tsc && cd ../demo && tns run android --syncAllFiles",
+        "demo.debug.ios": "npm i && npm run tsc && cd ../demo && tns debug ios --syncAllFiles",
+        "demo.debug.android": "npm i && npm run tsc && cd ../demo && tns debug android --syncAllFiles",
         "demo.reset": "cd ../demo && rimraf platforms",
         "plugin.prepare": "npm run tsc && cd ../demo && tns plugin remove nativescript-appsettings-async && tns plugin add ../src",
         "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules && npm run plugin.link",
@@ -30,11 +32,12 @@
         "NativeScript",
         "JavaScript",
         "Android",
-        "iOS"
+        "iOS",
+        "ApplicationSettings"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Daniel Freiling",
+        "email": "ddfreiling@gmail.com"
     },
     "bugs": {
         "url": "https://github.com/ddfreiling/nativescript-appsettings-async/issues"
