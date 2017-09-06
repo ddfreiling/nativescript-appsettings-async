@@ -4,5 +4,6 @@
     <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
     <Button text="Test AppSettings" class="btn btn-primary" tap="runDefaultTest" />
     <Button text="Test AppSettings Async" class="btn btn-primary" tap="runAsyncTest" />
+    <Label text="You need to 'tns debug' to see test output" textWrap="true" horizontalAlignment="center"/>
   </StackLayout>
 </Page>
