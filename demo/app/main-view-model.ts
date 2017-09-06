@@ -1,9 +1,10 @@
 import { Observable } from 'tns-core-modules/data/observable';
 
 import * as platform from 'tns-core-modules/platform';
+import * as dialogs from 'tns-core-modules/ui/dialogs';
 import * as appSettings from 'tns-core-modules/application-settings';
 import * as utils from 'tns-core-modules/utils/utils';
-import { AppSettingsAsync as appSettingsAsync } from 'nativescript-appsettings-async';
+import { AppSettingsAsync as appSettingsAsync } from '@nota/nativescript-appsettings-async';
 
 const SETTINGS_KEY = 'SUPERHEROES';
 
@@ -17,38 +18,40 @@ export class HelloWorldModel extends Observable {
 
     this.message = `Hello World!`;
 
-    // Test setup
-    const superheroesObj = {};
-    for (let i = 0; i < 100; i++) {
-      superheroesObj[i] = superheroes;
-    }
-    this.dataStr = JSON.stringify(superheroesObj);
-    appSettings.clear();
-    appSettingsAsync.clear();
+    setTimeout(() => {
+      // Test setup
+      const superheroesObj = {};
+      for (let i = 0; i < 50; i++) {
+        superheroesObj[i] = superheroes;
+      }
+      this.dataStr = JSON.stringify(superheroesObj);
+    }, 100);
   }
 
   public runDefaultTest() {
+    appSettings.clear();
     console.time('app-settings-default');
     for (let i = 0; i < 10; i++) {
       const key = `${SETTINGS_KEY}_DEFAULT_${i}`;
       appSettings.setString(key, this.dataStr);
-      // if (appSettingsAsync.hasKey(key)) {
-      //   appSettings.getString(key);
-      // }
-      appSettings.remove(key);
+      if (appSettings.hasKey(key)) {
+        appSettings.getString(key);
+        appSettings.remove(key);
+      }
     }
     console.timeEnd('app-settings-default');
   }
 
   public runAsyncTest() {
+    appSettingsAsync.clear();
     console.time('app-settings-async');
     for (let i = 0; i < 10; i++) {
       const key = `${SETTINGS_KEY}_ASYNC_${i}`;
       appSettingsAsync.setString(key, this.dataStr);
-      // if (appSettingsAsync.hasKey(key)) {
-      //   appSettingsAsync.getString(key);
-      // }
-      appSettingsAsync.remove(key);
+      if (appSettingsAsync.hasKey(key)) {
+        appSettingsAsync.getString(key);
+        appSettingsAsync.remove(key);
+      }
     }
     console.timeEnd('app-settings-async');
   }
