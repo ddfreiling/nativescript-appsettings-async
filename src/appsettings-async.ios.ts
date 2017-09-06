@@ -1,5 +1,5 @@
 import { Utils } from './appsettings-async.common';
-import * as utils from "tns-core-modules/utils/utils";
+import * as utils from 'tns-core-modules/utils/utils';
 
 export class AppSettingsAsync {
   
@@ -41,19 +41,19 @@ export class AppSettingsAsync {
   // setters
   public static setBoolean(key: string, value: boolean): void {
     Utils.checkKey(key);
-    Utils.ensureValidValue(value, "boolean");
+    Utils.ensureValidValue(value, 'boolean');
     this.userDefaults.setBoolForKey(value, key);
   }
   
   public static setString(key: string, value: string): void {
     Utils.checkKey(key);
-    Utils.ensureValidValue(value, "string");
+    Utils.ensureValidValue(value, 'string');
     this.userDefaults.setObjectForKey(value, key);
   }
   
   public static setNumber(key: string, value: number): void {
     Utils.checkKey(key);
-    Utils.ensureValidValue(value, "number");
+    Utils.ensureValidValue(value, 'number');
     this.userDefaults.setDoubleForKey(value, key);
   }
   

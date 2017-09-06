@@ -1,5 +1,5 @@
 import { Utils } from './appsettings-async.common';
-import { getNativeApplication } from "tns-core-modules/application";
+import { getNativeApplication } from 'tns-core-modules/application';
 
 export class AppSettingsAsync {
 
@@ -10,7 +10,7 @@ export class AppSettingsAsync {
       AppSettingsAsync.sharedPreferences =
         (<android.app.Application>getNativeApplication())
           .getApplicationContext()
-          .getSharedPreferences("prefs.db", 0);
+          .getSharedPreferences('prefs.db', android.content.Context.MODE_PRIVATE);
     }
   }
 
@@ -36,7 +36,7 @@ export class AppSettingsAsync {
   public static getString(key: string, defaultValue?: string): string {
     this.verify(key);
     if (this.hasKey(key)) {
-        return this.sharedPreferences.getString(key, "");
+        return this.sharedPreferences.getString(key, '');
     }
     return defaultValue;
   }
@@ -52,31 +52,31 @@ export class AppSettingsAsync {
   // setters
   public static setBoolean(key: string, value: boolean): void {
     this.verify(key);
-    Utils.ensureValidValue(value, "boolean");
-    var editor = this.sharedPreferences.edit();
+    Utils.ensureValidValue(value, 'boolean');
+    const editor = this.sharedPreferences.edit();
     editor.putBoolean(key, value);
     editor.apply();
   }
 
   public static setString(key: string, value: string): void {
     this.verify(key);
-    Utils.ensureValidValue(value, "string");
-    var editor = this.sharedPreferences.edit();
+    Utils.ensureValidValue(value, 'string');
+    const editor = this.sharedPreferences.edit();
     editor.putString(key, value);
     editor.apply();
   }
 
   public static setNumber(key: string, value: number): void {
     this.verify(key);
-    Utils.ensureValidValue(value, "number");
-    var editor = this.sharedPreferences.edit();
+    Utils.ensureValidValue(value, 'number');
+    const editor = this.sharedPreferences.edit();
     editor.putFloat(key, float(value));
     editor.apply();
   }
 
   public static remove(key: string): void {
     this.verify(key);
-    var editor = this.sharedPreferences.edit();
+    const editor = this.sharedPreferences.edit();
     editor.remove(key);
     editor.apply();
   }
