@@ -1,36 +1,28 @@
 # AppSettings Async
 
-Describe what's the purpose of your plugin. Badges etc.
+nativescript-appsettings-async does everything that tns-core-modules/application-settings does, but it does so without block the UI thread whenever writing a new value.
 
-In case you develop UI plugin, this is where you can add some screenshots.
-
-## (Optional) Prerequisites / Requirements
+The way Nativescript by default synchronously flushes all settings to disk whenever a single value is changed, seemed very detrimental to a smooth UI experience, so I implemented this plugin to fix that. This change will primarily be felt when writing many or very large string to application-settings.
 
 ## Installation
 
-Describe your plugin installation steps. Ideally it would be something like:
-
-```javascript
-tns plugin add <your-plugin-name>
+```
+tns plugin add @nota/nativescript-appsettings-async
 ```
 
 ## Usage 
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
-	
-	```javascript
-    Usage code snippets here
-    ```)
+```javascript
+import { AppSettingsAsync as appSettingsAsync } from '@nota/nativescript-appsettings-async';
+// Same interface as default application-settings, but Async setters
+appSettingsAsync.setString('my_key', 'my_value');
+// Explicitly flush settings to persistant storage.
+appSettingsAsync.flush();
+```
 
-## API
+## TODO
+- Load app-settings on a background thread
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
-    
-| Property | Default | Description |
-| --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
-    
 ## License
 
 Apache License Version 2.0, January 2004
