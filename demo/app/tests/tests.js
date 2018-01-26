@@ -3,10 +3,10 @@ var appsettingsAsync = new AppsettingsAsync();
 
 describe("greet function", function() {
     it("exists", function() {
-        expect(appsettingsAsync.greet).toBeDefined();
+        expect(appsettingsAsyns).toBeDefined();
     });
 
     it("returns a string", function() {
-        expect(appsettingsAsync.greet()).toEqual("Hello, NS");
+        expect(appsettingsAsync.has('Test')).toEqual(false);
     });
 });

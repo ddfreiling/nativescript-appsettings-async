@@ -1,3 +1,7 @@
+# Deprecated
+
+This approach is now integrated with tns-core-modules >= 3.4.0, making this plugin deprecated.
+
 # AppSettings Async
 
 nativescript-appsettings-async does everything that tns-core-modules/application-settings does, but it does so without block the UI thread whenever writing a new value.
@@ -10,7 +14,7 @@ The way Nativescript by default synchronously flushes all settings to disk whene
 tns plugin add @nota/nativescript-appsettings-async
 ```
 
-## Usage 
+## Usage
 
 ```javascript
 import { AppSettingsAsync as appSettingsAsync } from '@nota/nativescript-appsettings-async';
